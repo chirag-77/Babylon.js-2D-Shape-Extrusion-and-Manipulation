@@ -1,0 +1,22 @@
+body{
+  background: #534c4c;
+}
+#myCanvas {
+    height: 60%;
+    width: 90%;
+  }
+
+  button {
+    background-color: rgb(16, 118, 113);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #buttons{
+    margin: 10px 200px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
