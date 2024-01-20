@@ -1,28 +1,28 @@
 # Babylon.js-2D-Shape-Extrusion-and-Manipulation
 
 **ToDo:** <br />
-1.Use Babylon.js to create a 3D scene with a ground plane.
-2.Implement functionality to allow the user to draw 2D shapes on the ground plane using mouse interactions.
-3.Once the shape is completed (a closed loop), provide a UI element (e.g., button) to initiate the extrusion process.
-4.Allow the user to move the extruded objects on the ground plane using mouse interactions.
-5.Implement functionality to edit the vertices of the extruded object using mouse interactions.
-6.Provide visual cues and UI elements to indicate the selected object and active editing mode.
+1.Use Babylon.js to create a 3D scene with a ground plane.<br />
+2.Implement functionality to allow the user to draw 2D shapes on the ground plane using mouse interactions<br />
+3.Once the shape is completed (a closed loop), provide a UI element (e.g., button) to initiate the extrusion process.<br />
+4.Allow the user to move the extruded objects on the ground plane using mouse interactions.<br />
+5.Implement functionality to edit the vertices of the extruded object using mouse interactions.<br />
+6.Provide visual cues and UI elements to indicate the selected object and active editing mode.<br />
 
 **Usage:** <br />
 1. A 3D scene with a ground plane.
 2. Functionality to allow the user to draw 2D shapes on the ground plane using mouse interactions <br />
-                - left-click to add points
-                -right-click to complete the shape
-                -Draw button to enter the draw mode
-3. Extrude button to initiate the extrusion of 2D Closed loop polygons to a height of 5 units.
-4. Move button to perform movement of extruded shapes on the ground plane using click and drag.
-5. Edit button to edit the vertices of the extruded object using click and drag.
-6. Visual cues and UI elements to indicate the selected object and active editing mode.
+                - left-click to add points<br />
+                -right-click to complete the shape<br />
+                -Draw button to enter the draw mode<br />
+3. Extrude button to initiate the extrusion of 2D Closed loop polygons to a height of 5 units.<br />
+4. Move button to perform movement of extruded shapes on the ground plane using click and drag.<br />
+5. Edit button to edit the vertices of the extruded object using click and drag.<br />
+6. Visual cues and UI elements to indicate the selected object and active editing mode.<br />
 
 **How To run the application:**
-1. Clone the repository 
-2. Run the HTML file to view it on your local
-
+1. Clone the repository <br />
+2. Run the HTML file to view it on your local<br />
+3. Alternatively find it live at https://chirag-77.github.io/Babylon.js-2D-Shape-Extrusion-and-Manipulation/ <br />
 **A glimpse into the Application:**
 1. 3D scene with Ground plane
 ![image](https://github.com/chirag-77/Babylon.js-2D-Shape-Extrusion-and-Manipulation/assets/86802843/04d8d9c0-8957-4243-918d-43d3d6e9c2d4)
