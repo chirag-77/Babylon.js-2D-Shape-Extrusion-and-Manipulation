@@ -155,6 +155,7 @@ function runMoveMode() {
             canvas.removeEventListener("pointerup", onPointerUpDrag);
             canvas.removeEventListener("pointermove", onPointerMoveDrag);
         }
+        //not a left-click
         if (evt.button !== 0) {
             return;
         }
@@ -214,16 +215,16 @@ function runMoveMode() {
         var idx = Number(currentMesh.id.slice(13));    
         curPointSet = shapesToExtrude[idx];
 
-        var updatedPath = []
+    
         for(var i=0; i<curPointSet.length; i++){
+            //the old position of the spheres
             sphereName = "pointMarker"+idx.toString() + "_" + i.toString();
             curSphere = scene.getMeshByName(sphereName);
             if(curSphere != null){
+                //updating the position of spheres
                 curSphere.position.addInPlace(diff);
                 curPointSet[i] = curSphere.position;
-                updatedPath.push(curSphere.position.x);
-                updatedPath.push(curSphere.position.y);
-                updatedPath.push(curSphere.position.z);
+                
             }
             else{
                 console.log("sphere not found: ", sphereName);
@@ -237,9 +238,7 @@ function runMoveMode() {
         var n = curPointSet.length;
         curPointSet[n-1] = curPointSet[0];
 
-        updatedPath.push(updatedPath[0]);
-        updatedPath.push(updatedPath[1]);
-        updatedPath.push(updatedPath[2]);
+   
 
 
         // creating new line mesh (2d shape) & disposing earlier one
@@ -291,17 +290,20 @@ function runVertexEditMode(){
         var rayPerpedicular = new BABYLON.Ray(origin, direction, length);
         
         // for debugging 
-        // var rayHelper = new BABYLON.RayHelper(rayPerpedicular);
+        var rayHelper = new BABYLON.RayHelper(rayPerpedicular);
         // rayHelper.show(scene, new BABYLON.Color3(1, 0, 0)); // Red color
 
         // determine all the meshes hit by the perpendicular ray
         var hits = scene.multiPickWithRay(rayPerpedicular);
         if (hits){
+            console.log(hits.length);
             for (var i=0; i<hits.length; i++){
                 // if pointMarker on ground is hit, then it is a vertex of the extruded polygon
                 // which can be used to update the extruded polygon
+                console.log(hits[i].pickedMesh.name);
                 if(hits[i].pickedMesh.name.startsWith("pointMarker")){
                     currentMeshNonSphere = hits[i].pickedMesh;
+                    console.log(currentMeshNonSphere);
                     isVertexBool = true;
                     break;
                 }
@@ -325,7 +327,7 @@ function runVertexEditMode(){
             canvas.removeEventListener("pointerup", onPointerUp);
             canvas.removeEventListener("pointermove", onPointerMove);
         }
-
+        //if not a left-click return 
         if (evt.button !== 0) {
             return;
         }
