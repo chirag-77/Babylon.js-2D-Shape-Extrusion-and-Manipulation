@@ -83,27 +83,19 @@ function drawPointMarker(point) {
 
 // Step 3: 2D-Shape Extrusion    
 
-var shapesExtruded = [] // boolean array to avoid multiple extrusion objects
-
+ 
+let toProcess=0;
 function extrudeShape(height=5){
     drawMode = false;
     moveMode = false;
     vertexEditMode = false;
     extrudeMode = true;
-    
-
-
-    for(let i=0; i<shapesToExtrude.length; i++){
-
-        if(i == shapesExtruded.length){
-            shapesExtruded.push(false);
-        }
-
-        if(shapesExtruded[i] == false){
+    //start the extrusion process from where we left
+    for(; toProcess<shapesToExtrude.length; toProcess++){
 
             // Extruding shape with height
-            var extrudedShapeUniqueId = "shapeExtruded" + i.toString();
-            const extrusion = BABYLON.MeshBuilder.ExtrudePolygon(extrudedShapeUniqueId, {shape: shapesToExtrude[i], depth: 5, updatable: true}, scene);
+            var extrudedShapeUniqueId = "shapeExtruded" + toProcess.toString();
+            const extrusion = BABYLON.MeshBuilder.ExtrudePolygon(extrudedShapeUniqueId, {shape: shapesToExtrude[toProcess], depth: 5, updatable: true}, scene);
             extrusion.position.y = height;
     
             // Extruded shape UI Enhancements
@@ -113,10 +105,7 @@ function extrudeShape(height=5){
             extrusion.enableEdgesRendering();
             extrusion.edgesWidth = 4.0; 
             extrusion.edgesColor = new BABYLON.Color4(0, 0, 0, 1);
-
-            // marking as shape extruded
-            shapesExtruded[i] = true;
-        }
+        
         
     }
 
@@ -238,7 +227,7 @@ function runMoveMode() {
         var n = curPointSet.length;
         curPointSet[n-1] = curPointSet[0];
 
-   
+        shapesToExtrude[idx]=curPointSet;
 
 
         // creating new line mesh (2d shape) & disposing earlier one
