@@ -35,7 +35,6 @@ function enterDrawMode() {
     extrudeMode = false;
     posit=camera.position;
     camera.beta=0;
-    camera.position = BABYLON.Vector3.Lerp(camera.position,posit,0.05);
 } 
 
 function handlePointer(pointerInfo) {
