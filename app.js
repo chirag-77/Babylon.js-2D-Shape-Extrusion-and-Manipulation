@@ -8,7 +8,7 @@ camera.attachControl(canvas, true);
 var drawMode = false;
 var moveMode = false;
 var vertexEditMode = false;
-
+var extrudeMode=false;
 var points = [];
 var shapesToExtrude = [];
 
@@ -33,7 +33,10 @@ function enterDrawMode() {
     moveMode = false;
     vertexEditMode = false;
     extrudeMode = false;
-}
+    posit=camera.position;
+    camera.beta=0;
+    camera.position = BABYLON.Vector3.Lerp(camera.position,posit,0.05);
+} 
 
 function handlePointer(pointerInfo) {
     if(drawMode){
@@ -425,6 +428,21 @@ function runVertexEditMode(){
 }
     
 // Run the app
+let a=0;
 engine.runRenderLoop(function(){
+    if(a!=0)
+    a.classList.remove("pressed");
+    if(drawMode)
+    a=document.getElementById("drawMode");
+    else if(moveMode)
+    a=document.getElementById("moveMode");
+    else if(extrudeMode)
+    a=document.getElementById("extrudeMode");
+    else if(vertexEditMode)
+    a=document.getElementById("vertexEditMode");
+    if(a!=0){
+    a.classList.add("pressed");
+    // console.log(a.classlist.contains("pressed"));
+    }
     scene.render();
 });
